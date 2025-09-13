@@ -1,7 +1,7 @@
 Wiki Lakehouse (Kafka → S3/Glue → Athena)
 =========================================
 
-**An end-to-end, containerized pipeline that streams Wikipedia RecentChange events, lands raw data in S3, curates it to partitioned Parquet with AWS Glue (plus a Glue Crawler for schema), and materializes daily aggregates in Athena. Airflow orchestrates everything; Docker Compose makes it reproducible.**
+**An end-to-end, containerized pipeline that streams Wikipedia RecentChange events, lands raw data in S3, curates partitioned Parquet with AWS Glue (plus a Glue Crawler), materializes daily aggregates in Athena, and visualizes them in Amazon QuickSight. Orchestrated by Airflow; reproducible with Docker Compose.**
 
 Architecture 
 -----------------------------
@@ -27,6 +27,8 @@ flowchart LR
 *   **Athena CTAS**: idempotent daily materializations for fast, predictable queries.
     
 *   **Airflow**: explicit lineage & retries; easy to extend with new tasks.
+
+*   **QuickSight**: interactive dashboards directly on Athena tables; quick top-N, trends, and drill-downs for sharing.
     
 
 What’s in the repo
