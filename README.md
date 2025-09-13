@@ -3,6 +3,10 @@ Wiki Lakehouse (Kafka → S3/Glue → Athena)
 
 **An end-to-end, containerized pipeline that streams Wikipedia RecentChange events, lands raw data in S3, curates partitioned Parquet with AWS Glue (plus a Glue Crawler), materializes daily aggregates in Athena, and visualizes them in Amazon QuickSight. Orchestrated by Airflow; reproducible with Docker Compose.**
 
+<br> <br>
+### Data source
+Live events come from Wikimedia’s **EventStreams** (SSE) recentchange feed: [https://stream.wikimedia.org/v2/stream/recentchange](https://stream.wikimedia.org/v2/stream/recentchange).The producer keeps a long-lived connection with polite retries and a descriptive User-Agent, then publishes each JSON event to Kafka.Docs: [https://www.mediawiki.org/wiki/Manual:Contents](https://www.mediawiki.org/wiki/Manual:Contents).
+
 Architecture 
 -----------------------------
 ```mermaid
