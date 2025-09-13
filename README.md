@@ -32,19 +32,27 @@ flowchart LR
 What’s in the repo
 ------------------
 ```text
-├── dag/
-│   ├── wiki_pipeline_dag.py        # Airflow DAG: clean ➜ sentiment
-│   └── airflow_dag_screenshot.png      # Screenshot of Airflow DAG
-├── docker-compose.yml                   # Minimal Airflow + Postgres (dev)
-├── clean_transformed.py                 # Databricks: curate raw CSVs → Parquet
-├── sentiment_analysis.py                # Databricks: LLM sentiment
-├── README.md               
-├── redShift_analysis.sql                # DDL + COPY + DQ checks + analysis portfolio
-└── airbnb_exploratory_analysis.ipynb   
+.
+├── docker-compose.yml
+├── README.md
+├── airflow/
+│   ├── dags/
+│   │   └── wiki_pipeline_dag.py      # Airflow: Glue → Athena orchestration
+│   └── airflow_dag_screenshot.png             # Airflow DAG screenshot
+├── kafka/
+│   ├── wiki_producer.py              # Wikimedia SSE → Kafka
+│   └── wiki_s3_consumer.py           # Kafka → S3 (raw NDJSON, ds=YYYY-MM-DD)
+├── glue/
+│   └── job_wiki_curate.py            # Glue Spark: raw → curated Parquet (yyyy/mm/dd)
+├── upsert_athena_aggregates.py    
+│   
+└── QuickSight/
+    ├── analysis_dashboard_1.png
+    ├── analysis_dashboard_2.png
+    └── analysis_dashboard_3.png
+
 ```
 
-
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   airflow/    dags/wiki_pipeline_dag.py        # crawl_raw → curate_job → msck → daily_ctas    requirements.txt  glue/    job_wiki_curate.py               # PySpark transform + partitioning  kafka/    wiki-producer.py                 # SSE → Kafka    wiki-s3-consumer.py              # Kafka → S3 raw (NDJSON, gz)  athena/    (helpers / sample SQL)  docker-compose.yml                 # services + env wiring   `
 
 Run it
 ------
