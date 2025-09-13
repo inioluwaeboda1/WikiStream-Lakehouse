@@ -37,9 +37,8 @@ What’s in the repo
 .
 ├── docker-compose.yml
 ├── README.md
-├── airflow/
-│   ├── dags/
-│   │   └── wiki_pipeline_dag.py      # Airflow: Glue → Athena orchestration
+├── dag/
+│   ├── wiki_pipeline_dag.py      # Airflow: Glue → Athena orchestration
 │   └── airflow_dag_screenshot.png             # Airflow DAG screenshot
 ├── kafka/
 │   ├── wiki_producer.py              # Wikimedia SSE → Kafka
