@@ -7,13 +7,13 @@ Architecture
 -----------------------------
 ```mermaid
 flowchart LR
-  SSE[[Wikimedia SSE]] --> K[(Kafka)]
-  K --> R[S3: raw NDJSON]
-  R --> G[Glue Job]
-  G --> C[S3: curated Parquet (yyyy/mm/dd)]
-  C -.-> CR[Glue Crawler]
-  C --> A[Athena CTAS (daily_* tables)]
-  A --> Q[QuickSight / Analytics]
+  SSE["Wikimedia SSE"] --> K[(Kafka)]
+  K --> R["S3: raw NDJSON"]
+  R --> G["Glue Job"]
+  G --> C["S3: curated Parquet (yyyy/mm/dd)"]
+  C -.-> CR["Glue Crawler"]
+  C --> A["Athena CTAS (daily_* tables)"]
+  A --> Q["QuickSight / Analytics"]
 ```
 
 *   **Kafka**: decouples ingestion from downstream; can replay and scale consumers.
