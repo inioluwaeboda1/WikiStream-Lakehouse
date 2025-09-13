@@ -49,9 +49,9 @@ What’s in the repo
 ├── upsert_athena_aggregates.py    
 │   
 └── QuickSight/
-    ├── analysis_dashboard_1.png
-    ├── analysis_dashboard_2.png
-    └── analysis_dashboard_3.png
+    ├── QuickSight_analysis_dashboard_1.png
+    ├── QuickSight_analysis_dashboard_2.png
+    └── QuickSight_analysis_dashboard_3.png
 
 ```
 
